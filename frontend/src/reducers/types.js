@@ -1,0 +1,8 @@
+export const GET_CITIES = Symbol('GET_CITIES')
+export const GET_CITIES_START = Symbol('GET_CITIES_START')
+export const GET_CITIES_END = Symbol('GET_CITIES_END')
+export const GET_CITIES_FAILURE = Symbol('GET_CITIES_FAILURE')
+export const GET_PLACES = Symbol('GET_PLACES')
+export const GET_PLACES_START = Symbol('GET_PLACES_START')
+export const GET_PLACES_END = Symbol('GET_PLACES_END')
+export const GET_PLACES_FAILURE = Symbol('GET_PLACES_FAILURE')
