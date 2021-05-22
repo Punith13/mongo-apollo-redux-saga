@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
-const { ApolloServer } = require('apollo-server-express')
+const { ApolloServer, makeExecutableSchema } = require('apollo-server-express')
 const router = require('./routes')
 
 const app = express()
@@ -20,8 +20,12 @@ mongoose.connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}@localhost:27017/`, {
 })
 
 const { typeDefs, resolvers } = require('./apollo')
+const schema = makeExecutableSchema({ typeDefs, resolvers })
 
-const server = new ApolloServer({ typeDefs, resolvers })
+const server = new ApolloServer({
+  schema,
+  context: ({ req, res }) => ({ req, res }),
+})
 server.applyMiddleware({ app })
 
 app.listen(5000, () => {
